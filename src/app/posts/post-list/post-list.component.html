@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="header">
+        <h5>Request Info</h5>
+          <!--Search-->
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search here..."
+            [(ngModel)]="filter" >
+
+
+        </div>
+        <a [routerLink]="['../post']" class="btn btn-primary" style="float: right; margin-top: 10px;">Add Request</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>RequestId</th>
+                <th>CauseTravel</th>
+                <th>Source</th>
+                <th>Priority</th>
+                <th>Destination</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of resourceService.resources | filter:filter | paginate:{itemsPerPage:3 , currentPage:page}">
+                <td (click)="populateForm(post)">{{post.RequestId}}</td>
+                <td (click)="populateForm(post)">{{post.CauseTravel}}</td>
+                <td (click)="populateForm(post)">{{post.Source}}</td>
+                <td (click)="populateForm(post)">{{post.Priority}}</td>
+                <td (click)="populateForm(post)">{{post.Destination}}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteRequest(post)">X</button>&nbsp;
+                    <button (click)="updateRequest(post.RequestId)" class="btn btn-info" style="margin-left: 10px;" >Edit</button>&nbsp;
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+    </div>

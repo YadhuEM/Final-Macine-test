@@ -1,0 +1,73 @@
+<form name="postform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+
+   
+
+    
+    <div class="form-group">
+        <label>Travel Cause</label>
+        <input type="text" name="CauseTravel" #CauseTravel="ngModel" [(ngModel)]="resourceService.formData.causeTravel"
+            class="form-control" placeholder="Enter cause travel" required minlength="5" maxlength="25"
+            [ngClass]="{ 'is-invalid': CauseTravel.touched && CauseTravel.invalid }" />
+            <!--
+        <div class="validation-error" *ngIf="CauseTravel.touched && CauseTravel.invalid">
+            <div *ngIf="CauseTravel.errors.required">CauseTravel Name is required</div>
+        </div>-->
+    </div>
+
+    <!--Source-->
+    <div class="form-group">
+        <label>Source</label>
+        <input name="Source" #Source="ngModel" [(ngModel)]="resourceService.formData.source"
+            class="form-control" placeholder="Enter source" required
+            [ngClass]="{ 'is-invalid': Source.touched && Source.invalid }" />
+            <!--
+        <div class="validation-error" *ngIf="Source.touched && Source.invalid">
+            <div *ngIf="Source.errors.required">Source is required</div>
+        </div>-->
+    </div>
+
+    <!--Destination-->
+    <div class="form-group">
+        <label>Destination</label>
+        <input type="text" name="Destination" #Destination="ngModel" [(ngModel)]="resourceService.formData.destination"
+            class="form-control" placeholder="Enter Destination" required
+            [ngClass]="{ 'is-invalid': Destination.touched && Destination.invalid }" />
+            <!--
+        <div class="validation-error" *ngIf="Destination.touched && Destination.invalid">
+            <div *ngIf="Destination.errors.required">Destination description is required</div>
+        </div>-->
+    </div>
+
+    <!--Resource Capacity-->
+    <div class="form-group">
+        <label>Priority</label>
+        <input name="priority" #priority="ngModel" [(ngModel)]="resourceService.formData.priority" class="form-control"
+            placeholder="Enter priority" required
+            [ngClass]="{ 'is-invalid': priority.touched && priority.invalid }" />
+            <!--
+        <div class="validation-error" *ngIf="priority.touched && priority.invalid">
+            <div *ngIf="priority.errors.required">priority is required</div>
+        </div>-->
+    </div>
+
+    <!--IsActive-->
+    <div class="form-group">
+        <div class="form-check">
+            <label class="col-md-4?">Is Active</label>
+            <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel"
+                [(ngModel)]="resourceService.formData.isActive" class="form-check-input">
+        </div>
+    </div>
+
+   
+
+
+    <!--Submit button-->
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+            class="btn btn-lg btn-primary form-control">Submit</button>
+    </div>
+
+
+</form>
